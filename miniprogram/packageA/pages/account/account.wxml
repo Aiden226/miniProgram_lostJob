@@ -1,0 +1,75 @@
+<!--pages/account/account.wxml-->
+<view class="container">
+    <!-- 顶部导航 -->
+    <view class="header">
+        <button bindtap="switchTab" class="tab-btn {{currentTab === 'record' ? 'active' : ''}}"
+            data-tab="record">记账</button>
+        <button bindtap="switchTab" class="tab-btn {{currentTab === 'history' ? 'active' : ''}}"
+            data-tab="history">历史</button>
+    </view>
+
+    <!-- 记账表单（默认显示） -->
+    <view class="record-form" wx:if="{{currentTab === 'record'}}">
+        <view class="date-picker">
+            <picker mode="date" value="{{currentDate}}" bindchange="bindDateChange">
+                <view class="picker-btn">
+                    <text class="icon">📅</text>
+                    <text class="date-text">{{currentDate}}</text>
+                </view>
+            </picker>
+        </view>
+
+        <view class="form-group">
+            <text class="label">消费类型</text>
+            <picker mode="selector" range="{{typeList}}" value="{{typeIndex}}" bindchange="bindTypeChange">
+                <view class="picker-input">{{typeList[typeIndex]}}</view>
+            </picker>
+        </view>
+
+        <view class="form-group">
+            <text class="label">消费金额（元）</text>
+            <input type="number" placeholder="请输入金额" value="{{amount}}" bindinput="onAmountInput"
+                class="amount-input" />
+        </view>
+
+        <view class="form-group">
+            <text class="label">备注（可选）</text>
+            <input type="text" placeholder="简要描述消费" value="{{remark}}" bindinput="onRemarkInput" class="remark-input" />
+        </view>
+
+        <button bindtap="saveRecord" class="save-btn">保存记账</button>
+    </view>
+
+    <!-- 历史记录（切换显示） -->
+    <view class="history-container" wx:if="{{currentTab === 'history'}}">
+        <view class="history-header">
+            <picker mode="date" fields="month" value="{{selectedMonth}}" bindchange="bindMonthChange">
+                <view class="month-picker">
+                    <text class="icon">📆</text>
+                    <text class="month-text">{{selectedMonth}} 账单</text>
+                </view>
+            </picker>
+            <text class="total-amount">本月总消费：¥{{totalAmount}}</text>
+        </view>
+
+        <!-- 无记录提示 -->
+        <view class="no-record" wx:if="{{filteredRecords.length === 0}}">
+            <text class="icon">📝</text>
+            <text class="tip">暂无该月份的记账记录</text>
+        </view>
+
+        <!-- 记录列表 -->
+        <view class="record-list" wx:else>
+            <view wx:for="{{filteredRecords}}" wx:key="index" class="record-item">
+                <view class="record-left">
+                    <text class="type-tag" style="background-color: {{typeColor[item.type]}}">{{item.type}}</text>
+                    <view class="record-info">
+                        <text class="record-date">{{item.date}}</text>
+                        <text class="record-remark">{{item.remark || '无备注'}}</text>
+                    </view>
+                </view>
+                <text class="record-amount">-¥{{item.amount}}</text>
+            </view>
+        </view>
+    </view>
+</view>

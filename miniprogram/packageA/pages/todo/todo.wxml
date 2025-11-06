@@ -1,0 +1,50 @@
+<!--pages/todo/todo.wxml-->
+<view class="container">
+  <view class="title">待办清单</view>
+
+  <!-- 添加任务区域 -->
+  <view class="add-todo">
+    <input 
+      type="text" 
+      placeholder="请输入新任务..." 
+      bindinput="onInput" 
+      value="{{inputValue}}"
+    />
+    <button bindtap="addTodo">添加</button>
+  </view>
+
+  <!-- 任务列表区域 -->
+  <view class="todo-list">
+    <!-- 无任务时显示 -->
+    <view class="empty" wx:if="{{todoList.length === 0}}">
+      暂无任务，开始添加吧~
+    </view>
+
+    <!-- 任务列表 -->
+    <view class="todo-item" wx:for="{{todoList}}" wx:key="index">
+      <!-- 复选框（标记完成/未完成） -->
+      <view 
+        class="checkbox" 
+        bindtap="toggleComplete" 
+        data-index="{{index}}"
+        style="{{item.completed ? 'background:#07c160' : ''}}"
+      >
+        <text wx:if="{{item.completed}}">✓</text>
+      </view>
+
+      <!-- 任务内容 -->
+      <view class="todo-text" style="{{item.completed ? 'text-decoration:line-through;color:#999' : ''}}">
+        {{item.content}}
+      </view>
+
+      <!-- 删除按钮 -->
+      <button 
+        class="delete-btn" 
+        bindtap="deleteTodo" 
+        data-index="{{index}}"
+      >
+        删除
+      </button>
+    </view>
+  </view>
+</view>

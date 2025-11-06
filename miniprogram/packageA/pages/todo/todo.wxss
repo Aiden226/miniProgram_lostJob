@@ -1,0 +1,96 @@
+/* pages/todo/todo.wxss */
+.container {
+    padding: 20rpx;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 36rpx;
+    font-weight: bold;
+    margin: 30rpx 0;
+    text-align: center;
+    color: #333;
+  }
+  
+  .add-todo {
+    display: flex;
+    gap: 15rpx;
+    margin-bottom: 30rpx;
+    width: 100%;
+  }
+  
+  .add-todo input {
+    flex: 1;
+    height: 80rpx;
+    padding: 0 20rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    border: 1px solid #eee;
+    font-size: 28rpx;
+  }
+  
+  .add-todo button {
+    width: 140rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0;
+    background: #8baa92;
+    color: #fff;
+    font-size: 28rpx;
+  }
+  
+  .todo-list {
+    background: #fff;
+    border-radius: 10rpx;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .empty {
+    padding: 60rpx 0;
+    text-align: center;
+    color: #999;
+    font-size: 28rpx;
+  }
+  
+  .todo-item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+    border-bottom: 1px solid #f1f1f1;
+    width: 100%;
+  }
+  
+  .checkbox {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24rpx;
+    margin-right: 20rpx;
+  }
+  
+  .todo-text {
+    flex: 1;
+    font-size: 28rpx;
+    color: #333;
+    padding: 10rpx 0;
+  }
+  
+  .delete-btn {
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0;
+    background: #d47a6a;
+    color: white;
+    font-size: 24rpx;
+    width: 120rpx !important;
+
+  }

@@ -1,0 +1,56 @@
+<!--pages/100thing/100thing.wxml-->
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="header">
+    <view class="title">
+      <text class="icon">🍃</text>
+      <text class="text">辞职后100件事</text>
+    </view>
+    <button bindtap="scrollToTop" class="top-btn">
+      <text class="iconfont">↑</text>
+    </button>
+  </view>
+
+  <!-- 介绍区域 -->
+  <view class="intro">
+    <text class="intro-title">治愈、学习与探索</text>
+    <text class="intro-desc">辞职不是结束，而是新的开始。这里有100件值得做的事情，帮助你重启生活，找回自己。</text>
+    <view class="circle-container" bind:tap="goDone">
+      <view class="circle-outer"></view>
+      <view class="circle-middle"></view>
+      <view class="circle-inner"></view>
+      <view class="circle-text">查看完成事项</view>
+    </view>
+  </view>
+
+  <!-- 卡片列表 -->
+  <view class="card-list">
+    <view 
+      wx:for="{{unFinishList}}" 
+      wx:key="id" 
+      class="card"
+      data-id="{{item.id}}"
+    >
+      <!-- 序号侧边 -->
+      <view class="card-number {{item.id <= 30 ? 'type-heal' : (item.id <= 60 ? 'type-learn' : 'type-fun')}}">
+        <text>{{index + 1}}</text>
+      </view>
+      
+      <!-- 内容区域 -->
+      <view class="card-content">
+        <text class="card-title">{{item.title}}</text>
+        <text class="card-detail">{{item.detail}}</text>
+        <view class="card-footer" bind:tap="doneThing" data-id="{{item.id}}" data-item="{{item}}">
+          <view class="more">我已完成</view>
+          <text class="arrow">→</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer">
+    <text>慢慢来，享受这段属于自己的时光 🌸</text>
+    <text class="copyright">© 2025 辞职后重启计划</text>
+  </view>
+</view>

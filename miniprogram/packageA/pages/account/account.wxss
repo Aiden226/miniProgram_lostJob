@@ -1,0 +1,247 @@
+/* pages/account/account.wxss */
+/* 基础样式 */
+page {
+    background-color: #f8f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #333;
+  }
+  
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 30rpx;
+  }
+  
+  /* 顶部导航 */
+  .header {
+    width: 100%;
+    height: 120rpx;
+    background-color: #8baa92;
+    border-bottom-left-radius: 30rpx;
+    border-bottom-right-radius: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40rpx;
+    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.2);
+  }
+  
+  .title {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .tab-btn {
+    width: 140rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 28rpx;
+    line-height: 60rpx;
+    padding: 0;
+  }
+  
+  .tab-btn.active {
+    background-color: white;
+    color: #8baa92;
+    font-weight: 600;
+  }
+  
+  /* 记账表单 */
+  .record-form {
+    width: 90%;
+    margin: 40rpx auto 0;
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 40rpx;
+    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
+  }
+  
+  .date-picker {
+    margin-bottom: 40rpx;
+  }
+  
+  .picker-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80rpx;
+    border: 2rpx solid #8baa92;
+    border-radius: 15rpx;
+    color: #8baa92;
+    font-size: 30rpx;
+  }
+  
+  .picker-btn .icon {
+    margin-right: 15rpx;
+    font-size: 32rpx;
+  }
+  
+  .form-group {
+    margin-bottom: 35rpx;
+  }
+  
+  .label {
+    display: block;
+    font-size: 28rpx;
+    margin-bottom: 15rpx;
+    color: #666;
+  }
+  
+  .picker-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 80rpx;
+    border: 2rpx solid #eee;
+    border-radius: 15rpx;
+    padding: 0 25rpx;
+    font-size: 30rpx;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .amount-input, .remark-input {
+    width: 100%;
+    height: 80rpx;
+    border: 2rpx solid #eee;
+    border-radius: 15rpx;
+    padding: 0 25rpx;
+    font-size: 30rpx;
+    box-sizing: border-box;
+  }
+  
+  .amount-input:focus, .remark-input:focus, .picker-input:focus {
+    border-color: #8baa92;
+    outline: none;
+  }
+  
+  .save-btn {
+    width: 100%;
+    height: 90rpx;
+    background-color: #8baa92;
+    color: white;
+    font-size: 32rpx;
+    font-weight: 600;
+    border-radius: 15rpx;
+    margin-top: 20rpx;
+    line-height: 60rpx;
+  }
+  
+  .save-btn::after {
+    border: none;
+  }
+  
+  .save-btn:hover {
+    background-color: #6d8c75;
+  }
+  
+  /* 历史记录 */
+  .history-container {
+    width: 90%;
+    margin: 40rpx auto 0;
+  }
+  
+  .history-header {
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
+  }
+  
+  .month-picker {
+    display: flex;
+    align-items: center;
+    color: #8baa92;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .month-picker .icon {
+    margin-right: 15rpx;
+    font-size: 32rpx;
+  }
+  
+  .total-amount {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #e63946;
+  }
+  
+  .no-record {
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 80rpx 0;
+    text-align: center;
+    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
+  }
+  
+  .no-record .icon {
+    font-size: 60rpx;
+    color: #8baa92;
+    display: block;
+    margin-bottom: 20rpx;
+  }
+  
+  .no-record .tip {
+    font-size: 28rpx;
+    color: #999;
+  }
+  
+  .record-list {
+    background-color: white;
+    border-radius: 20rpx;
+    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
+    overflow: hidden;
+  }
+  
+  .record-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx;
+    border-bottom: 2rpx solid #f5f5f5;
+  }
+  
+  .record-item:last-child {
+    border-bottom: none;
+  }
+  
+  .record-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .type-tag {
+    font-size: 24rpx;
+    color: white;
+    padding: 8rpx 20rpx;
+    border-radius: 20rpx;
+    margin-right: 20rpx;
+  }
+  
+  .record-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .record-date {
+    font-size: 24rpx;
+    color: #999;
+    margin-bottom: 5rpx;
+  }
+  
+  .record-remark {
+    font-size: 28rpx;
+    color: #333;
+  }
+  
+  .record-amount {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #e63946;
+  }
