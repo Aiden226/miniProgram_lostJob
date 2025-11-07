@@ -1,28 +1,43 @@
 {
-  "pages": [
-    "pages/index/index"
-  ],
-  "subpackages": [
-    {
-      "root": "packageA",
-      "name": "packageA",
-      "pages": [
-        "pages/todo/todo",
-        "pages/100thing/100thing",
-        "pages/hasDone/hasDone",
-        "pages/account/account"
-      ],
-      "independent": true
+    "pages": [
+        "pages/index/index"
+    ],
+    "subpackages": [
+        {
+            "root": "packageA",
+            "name": "packageA",
+            "pages": [
+                "pages/todo/todo",
+                "pages/history/history",
+                "pages/100thing/100thing",
+                "pages/hasDone/hasDone",
+                "pages/account/account",
+                "pages/account-history/account-history"
+            ],
+            "independent": true
+        },
+        {
+            "root": "packageB",
+            "name": "packageB",
+            "pages": [
+                "pages/schedule/schedule",
+                "pages/diaryList/diaryList",
+                "pages/diaryEdit/diaryEdit"
+            ],
+            "independent": true
+        }
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarTitleText": "云开发 QuickStart",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json",
+    "style": "v2",
+    "lazyCodeLoading": "requiredComponents",
+    "usingComponents": {
+        "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
     }
-  ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2",
-  "lazyCodeLoading": "requiredComponents"
 }

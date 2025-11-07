@@ -1,75 +1,93 @@
 Page({
-  data: {
-    inputValue: '', // 输入框内容
-    todoList: [] // 任务列表
-  },
-
-  // 页面加载时读取缓存中的任务列表
-  onLoad() {
-    const savedTodos = wx.getStorageSync('todoList');
-    if (savedTodos) {
+    data: {
+      inputValue: '',
+      todoList: [],
+      currentDate: '' // 格式：YYYY-MM-DD
+    },
+  
+    onLoad() {
+      // 初始化日期
+      const today = this.formatDate(new Date());
+      this.setData({ currentDate: today });
+      
+      // 加载今日任务
+      this.loadTodayTodos();
+    },
+  
+    // 格式化日期为 YYYY-MM-DD
+    formatDate(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    },
+  
+    // 加载今日任务
+    loadTodayTodos() {
+      const today = this.data.currentDate;
+      const allHistory = wx.getStorageSync('todoHistory') || {};
       this.setData({
-        todoList: savedTodos
+        todoList: allHistory[today] || []
       });
-    }
-  },
-
-  // 监听输入框变化
-  onInput(e) {
-    this.setData({
-      inputValue: e.detail.value.trim()
-    });
-  },
-
-  // 添加新任务
-  addTodo() {
-    const { inputValue, todoList } = this.data;
-    if (!inputValue) {
-      wx.showToast({
-        title: '请输入任务内容',
-        icon: 'none'
+    },
+  
+    // 输入框变化
+    onInput(e) {
+      this.setData({ inputValue: e.detail.value.trim() });
+    },
+  
+    // 添加任务
+    addTodo() {
+      const { inputValue, todoList, currentDate } = this.data;
+      if (!inputValue) {
+        wx.showToast({ title: '请输入任务内容', icon: 'none' });
+        return;
+      }
+  
+      // 新增任务
+      const newTodo = { content: inputValue, completed: false };
+      const updatedList = [...todoList, newTodo];
+      
+      // 更新本地存储
+      const allHistory = wx.getStorageSync('todoHistory') || {};
+      allHistory[currentDate] = updatedList;
+      wx.setStorageSync('todoHistory', allHistory);
+      
+      // 更新页面
+      this.setData({
+        todoList: updatedList,
+        inputValue: ''
       });
-      return;
+    },
+  
+    // 切换完成状态
+    toggleComplete(e) {
+      const { index } = e.currentTarget.dataset;
+      const { todoList, currentDate } = this.data;
+      
+      todoList[index].completed = !todoList[index].completed;
+      const allHistory = wx.getStorageSync('todoHistory') || {};
+      allHistory[currentDate] = todoList;
+      wx.setStorageSync('todoHistory', allHistory);
+      
+      this.setData({ todoList });
+    },
+  
+    // 删除任务
+    deleteTodo(e) {
+      const { index } = e.currentTarget.dataset;
+      const { todoList, currentDate } = this.data;
+      
+      const updatedList = todoList.filter((_, i) => i !== index);
+      const allHistory = wx.getStorageSync('todoHistory') || {};
+      allHistory[currentDate] = updatedList;
+      wx.setStorageSync('todoHistory', allHistory);
+      
+      this.setData({ todoList: updatedList });
+    },
+  
+    // 跳转到历史页面
+    goToHistory() {
+      wx.navigateTo({ url: '/packageA/pages/history/history' });
     }
-
-    // 新增任务对象
-    const newTodo = {
-      content: inputValue,
-      completed: false
-    };
-
-    // 更新任务列表并保存到缓存
-    const newTodoList = [...todoList, newTodo];
-    this.setData({
-      todoList: newTodoList,
-      inputValue: '' // 清空输入框
-    });
-    wx.setStorageSync('todoList', newTodoList);
-  },
-
-  // 切换任务完成状态
-  toggleComplete(e) {
-    const { index } = e.currentTarget.dataset;
-    const { todoList } = this.data;
-    
-    // 切换completed状态
-    todoList[index].completed = !todoList[index].completed;
-    
-    // 更新列表并保存缓存
-    this.setData({ todoList });
-    wx.setStorageSync('todoList', todoList);
-  },
-
-  // 删除任务
-  deleteTodo(e) {
-    const { index } = e.currentTarget.dataset;
-    const { todoList } = this.data;
-    
-    // 删除对应索引的任务
-    const newTodoList = todoList.filter((_, i) => i !== index);
-    
-    // 更新列表并保存缓存
-    this.setData({ todoList: newTodoList });
-    wx.setStorageSync('todoList', newTodoList);
-  }
-});
+  });

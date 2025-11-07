@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="title">记账历史记录</view>
+
+  <!-- 无记录时显示 -->
+  <view class="empty" wx:if="{{historyList.length === 0}}">
+    <text>暂无记账记录</text>
+  </view>
+
+  <!-- 历史记录卡片列表 -->
+  <view class="history-container">
+    <view class="history-card" wx:for="{{historyList}}" wx:key="date">
+      <!-- 日期标题（含当日总计） -->
+      <view class="card-header">
+        <view class="card-date">{{item.date}}</view>
+        <view class="card-summary">
+          <text class="expense">支出：¥{{item.totalExpense}}</text>
+          <!-- <text class="income">收入：¥{{item.totalIncome}}</text>
+          <text class="balance">结余：¥{{item.balance}}</text> -->
+        </view>
+      </view>
+      
+      <!-- 当日记录列表 -->
+      <view class="record-list">
+        <view class="record-item" wx:for="{{item.records}}" wx:for-item="record" wx:key="index">
+          <view class="record-remark">{{record.remark}}</view>
+          <view class="record-time">{{record.time}}</view>
+          <view class="record-amount" style="color: {{record.type === 'expense' ? '#ff4d4f' : '#07c160'}}">
+            {{record.type === 'expense' ? '-' : '+'}}¥{{record.amount}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

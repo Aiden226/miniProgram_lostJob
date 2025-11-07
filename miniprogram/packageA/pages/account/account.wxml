@@ -1,75 +1,91 @@
-<!--pages/account/account.wxml-->
 <view class="container">
-    <!-- 顶部导航 -->
+    <!-- 头部：日期选择和历史按钮 -->
     <view class="header">
-        <button bindtap="switchTab" class="tab-btn {{currentTab === 'record' ? 'active' : ''}}"
-            data-tab="record">记账</button>
-        <button bindtap="switchTab" class="tab-btn {{currentTab === 'history' ? 'active' : ''}}"
-            data-tab="history">历史</button>
+        <picker mode="date" value="{{currentDate}}" start="2020-01-01" end="2030-12-31" bindchange="onDateChange">
+            <!-- 可见的点击区域（放在 picker 内部） -->
+            <view class="date-picker">
+                <text class="date-text">{{currentDate}}</text>
+            </view>
+        </picker>
+        <button bindtap="goToHistory" class="history-btn">历史记录</button>
     </view>
 
-    <!-- 记账表单（默认显示） -->
-    <view class="record-form" wx:if="{{currentTab === 'record'}}">
-        <view class="date-picker">
-            <picker mode="date" value="{{currentDate}}" bindchange="bindDateChange">
-                <view class="picker-btn">
-                    <text class="icon">📅</text>
-                    <text class="date-text">{{currentDate}}</text>
-                </view>
-            </picker>
+    <!-- 记账表单卡片 -->
+    <view class="account-form-card">
+        <!-- 金额输入 -->
+        <view class="form-item amount-item">
+            <text class="label">金额</text>
+            <text class="amount-symbol">¥</text>
+            <input type="number" placeholder="0.00" bindinput="onAmountInput" value="{{amount}}" class="amount-input"
+                placeholder-style="color:#ccc" />
         </view>
 
-        <view class="form-group">
+        <!-- 消费类型选择 -->
+        <view class="form-item">
             <text class="label">消费类型</text>
-            <picker mode="selector" range="{{typeList}}" value="{{typeIndex}}" bindchange="bindTypeChange">
-                <view class="picker-input">{{typeList[typeIndex]}}</view>
-            </picker>
+            <view class="type-selector" bindtap="openTypeDialog">
+                <text class="type-text">{{selectedType.name}}</text>
+            </view>
         </view>
 
-        <view class="form-group">
-            <text class="label">消费金额（元）</text>
-            <input type="number" placeholder="请输入金额" value="{{amount}}" bindinput="onAmountInput"
-                class="amount-input" />
-        </view>
+        <!-- 备注输入 -->
+        <!-- <view class="form-item">
+            <text class="label">备注</text>
+            <input type="text" placeholder="例如：早餐、交通" bindinput="onRemarkInput" value="{{remark}}" class="remark-input"
+                placeholder-style="color:#ccc" />
+        </view> -->
 
-        <view class="form-group">
-            <text class="label">备注（可选）</text>
-            <input type="text" placeholder="简要描述消费" value="{{remark}}" bindinput="onRemarkInput" class="remark-input" />
-        </view>
+        <!-- 收支切换 -->
+        <!-- <view class="form-item type-toggle">
+            <button class="toggle-btn {{type === 'expense' ? 'active-expense' : ''}}" bindtap="setType"
+                data-type="expense">
+                支出
+            </button>
+            <button class="toggle-btn {{type === 'income' ? 'active-income' : ''}}" bindtap="setType"
+                data-type="income">
+                收入
+            </button>
+        </view> -->
 
-        <button bindtap="saveRecord" class="save-btn">保存记账</button>
+        <button bindtap="addRecord" class="submit-btn">保存记录</button>
     </view>
 
-    <!-- 历史记录（切换显示） -->
-    <view class="history-container" wx:if="{{currentTab === 'history'}}">
-        <view class="history-header">
-            <picker mode="date" fields="month" value="{{selectedMonth}}" bindchange="bindMonthChange">
-                <view class="month-picker">
-                    <text class="icon">📆</text>
-                    <text class="month-text">{{selectedMonth}} 账单</text>
-                </view>
-            </picker>
-            <text class="total-amount">本月总消费：¥{{totalAmount}}</text>
+    <!-- 今日记录列表 -->
+    <view class="today-records">
+        <view class="section-title">
+            <text>今日记录</text>
+            <view class="summary">
+                <text class="expense">支出：¥{{totalExpense}}</text>
+                <!-- <text class="income">收入：¥{{totalIncome}}</text> -->
+            </view>
         </view>
 
-        <!-- 无记录提示 -->
-        <view class="no-record" wx:if="{{filteredRecords.length === 0}}">
-            <text class="icon">📝</text>
-            <text class="tip">暂无该月份的记账记录</text>
+        <view class="empty" wx:if="{{todayRecords.length === 0}}">
+            <text>暂无记录，开始添加吧~</text>
         </view>
 
-        <!-- 记录列表 -->
-        <view class="record-list" wx:else>
-            <view wx:for="{{filteredRecords}}" wx:key="index" class="record-item">
-                <view class="record-left">
-                    <text class="type-tag" style="background-color: {{typeColor[item.type]}}">{{item.type}}</text>
-                    <view class="record-info">
-                        <text class="record-date">{{item.date}}</text>
-                        <text class="record-remark">{{item.remark || '无备注'}}</text>
-                    </view>
+        <view class="record-list">
+            <view class="record-item" wx:for="{{todayRecords}}" wx:key="index">
+                <view class="record-info">
+                    <view class="record-remark">{{item.remark}}</view>
+                    <view class="record-time">{{item.time}}</view>
                 </view>
-                <text class="record-amount">-¥{{item.amount}}</text>
+                <view class="record-amount" style="color: {{item.type === 'expense' ? '#ff4d4f' : '#07c160'}}">
+                    {{item.type === 'expense' ? '-' : '+'}}¥{{item.amount}}
+                </view>
+                <button class="delete-btn" bindtap="deleteRecord" data-index="{{index}}" size="mini">
+                    删除
+                </button>
             </view>
         </view>
     </view>
+
+    <!-- 消费类型选择弹窗 -->
+    <mp-half-screen-dialog title="选择消费类型" show="{{showTypeDialog}}" bindclose="closeTypeDialog">
+        <view slot="desc" class="type-grid">
+            <view class="type-grid-item" wx:for="{{typeList}}" wx:key="id" bindtap="selectType" data-item="{{item}}">
+                <text class="grid-text">{{item.name}}</text>
+            </view>
+        </view>
+    </mp-half-screen-dialog>
 </view>

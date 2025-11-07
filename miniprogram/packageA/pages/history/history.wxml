@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="title">历史待办记录</view>
+
+  <!-- 无历史记录时显示 -->
+  <view class="empty" wx:if="{{historyList.length === 0}}">
+    暂无历史记录
+  </view>
+
+  <!-- 历史记录卡片列表 -->
+  <view class="history-container">
+    <view class="history-card" wx:for="{{historyList}}" wx:key="date">
+      <!-- 日期标题 -->
+      <view class="card-date">{{item.date}}</view>
+      
+      <!-- 任务列表 -->
+      <view class="task-list">
+        <view class="task-item" wx:for="{{item.tasks}}" wx:for-item="task" wx:key="index">
+          <view class="task-check" style="{{task.completed ? 'background:#6c8ca6' : ''}}">
+            <text wx:if="{{task.completed}}">✓</text>
+          </view>
+          <view class="task-text" style="{{task.completed ? 'text-decoration:line-through;color:#999' : ''}}">
+            {{task.content}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

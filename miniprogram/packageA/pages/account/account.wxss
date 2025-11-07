@@ -1,247 +1,348 @@
-/* pages/account/account.wxss */
-/* 基础样式 */
-page {
-    background-color: #f8f9fa;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #333;
-  }
-  
-  .container {
-    width: 100%;
+@import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+.container {
+    padding: 20rpx;
+    background-color: #f5f7f9;
     min-height: 100vh;
-    padding-bottom: 30rpx;
   }
   
-  /* 顶部导航 */
+  /* 头部样式 */
   .header {
-    width: 100%;
-    height: 120rpx;
-    background-color: #8baa92;
-    border-bottom-left-radius: 30rpx;
-    border-bottom-right-radius: 30rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40rpx;
-    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.2);
-  }
-  
-  .title {
-    font-size: 36rpx;
-    font-weight: bold;
-    color: white;
-  }
-  
-  .tab-btn {
-    width: 140rpx;
-    height: 60rpx;
-    border-radius: 30rpx;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: white;
-    font-size: 28rpx;
-    line-height: 60rpx;
-    padding: 0;
-  }
-  
-  .tab-btn.active {
-    background-color: white;
-    color: #8baa92;
-    font-weight: 600;
-  }
-  
-  /* 记账表单 */
-  .record-form {
-    width: 90%;
-    margin: 40rpx auto 0;
-    background-color: white;
-    border-radius: 20rpx;
-    padding: 40rpx;
-    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
+    margin: 20rpx 0 30rpx;
+    padding: 0 10rpx;
   }
   
   .date-picker {
-    margin-bottom: 40rpx;
-  }
-  
-  .picker-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 80rpx;
-    border: 2rpx solid #8baa92;
-    border-radius: 15rpx;
-    color: #8baa92;
+    background: white;
+    padding: 12rpx 20rpx;
+    border-radius: 30rpx;
+    box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+  }
+  
+  .date-text {
     font-size: 30rpx;
-  }
-  
-  .picker-btn .icon {
-    margin-right: 15rpx;
-    font-size: 32rpx;
-  }
-  
-  .form-group {
-    margin-bottom: 35rpx;
-  }
-  
-  .label {
-    display: block;
-    font-size: 28rpx;
-    margin-bottom: 15rpx;
-    color: #666;
-  }
-  
-  .picker-input {
-    box-sizing: border-box;
-    width: 100%;
-    height: 80rpx;
-    border: 2rpx solid #eee;
-    border-radius: 15rpx;
-    padding: 0 25rpx;
-    font-size: 30rpx;
-    color: #333;
-    display: flex;
-    align-items: center;
-  }
-  
-  .amount-input, .remark-input {
-    width: 100%;
-    height: 80rpx;
-    border: 2rpx solid #eee;
-    border-radius: 15rpx;
-    padding: 0 25rpx;
-    font-size: 30rpx;
-    box-sizing: border-box;
-  }
-  
-  .amount-input:focus, .remark-input:focus, .picker-input:focus {
-    border-color: #8baa92;
-    outline: none;
-  }
-  
-  .save-btn {
-    width: 100%;
-    height: 90rpx;
-    background-color: #8baa92;
-    color: white;
-    font-size: 32rpx;
     font-weight: 600;
-    border-radius: 15rpx;
-    margin-top: 20rpx;
+    color: #333;
+    margin-right: 10rpx;
+    width: 300rpx;
+    text-align: center;
+  }
+  
+  .arrow-icon {
+    width: 24rpx;
+    height: 24rpx;
+    opacity: 0.6;
+  }
+  
+  .history-btn {
+    width: 140rpx !important;
+    height: 60rpx;
     line-height: 60rpx;
+    padding: 0;
+    background: linear-gradient(135deg, #8baa92, #6d917a);
+    color: white;
+    font-size: 26rpx;
+    border-radius: 30rpx;
+    box-shadow: 0 2rpx 8rpx rgba(139, 170, 146, 0.3);
+    margin-right: 0rpx !important;
   }
   
-  .save-btn::after {
-    border: none;
-  }
-  
-  .save-btn:hover {
-    background-color: #6d8c75;
-  }
-  
-  /* 历史记录 */
-  .history-container {
-    width: 90%;
-    margin: 40rpx auto 0;
-  }
-  
-  .history-header {
-    background-color: white;
+  /* 表单卡片样式 */
+  .account-form-card {
+    background: white;
     border-radius: 20rpx;
     padding: 30rpx;
     margin-bottom: 30rpx;
-    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
+    box-shadow: 0 5rpx 15rpx rgba(0,0,0,0.05);
   }
   
-  .month-picker {
+  .form-item {
     display: flex;
     align-items: center;
-    color: #8baa92;
-    font-size: 30rpx;
-    margin-bottom: 20rpx;
+    margin-bottom: 35rpx;
+    position: relative;
   }
   
-  .month-picker .icon {
-    margin-right: 15rpx;
-    font-size: 32rpx;
-  }
-  
-  .total-amount {
-    font-size: 32rpx;
-    font-weight: 600;
-    color: #e63946;
-  }
-  
-  .no-record {
-    background-color: white;
-    border-radius: 20rpx;
-    padding: 80rpx 0;
-    text-align: center;
-    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
-  }
-  
-  .no-record .icon {
-    font-size: 60rpx;
-    color: #8baa92;
-    display: block;
-    margin-bottom: 20rpx;
-  }
-  
-  .no-record .tip {
+  .label {
+    width: 130rpx;
     font-size: 28rpx;
+    color: #666;
+  }
+  
+  /* 金额输入样式 */
+  .amount-item {
+    /* justify-content: center; */
+    padding: 20rpx 0;
+    margin-bottom: 40rpx;
+  }
+  
+  .amount-symbol {
+    font-size: 48rpx;
+    color: #333;
+    margin-right: 10rpx;
+    font-weight: 500;
+  }
+  
+  .amount-input {
+    flex: none;
+    font-size: 56rpx;
+    color: #333;
+    text-align: left;
+    padding: 0;
+    border: none;
+    height: auto;
+    width: 300rpx;
+  }
+  
+  /* 类型选择样式 */
+  .type-selector {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #f5f7f9;
+    padding: 15rpx 20rpx;
+    border-radius: 12rpx;
+  }
+  
+  .type-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 15rpx;
+  }
+  
+  .type-text {
+    font-size: 28rpx;
+    color: #333;
+    flex: 1;
+  }
+  
+  .arrow-right {
+    width: 24rpx;
+    height: 24rpx;
+    opacity: 0.5;
+  }
+  
+  /* 备注输入样式 */
+  .remark-input {
+    flex: 1;
+    height: 70rpx;
+    background: #f5f7f9;
+    border-radius: 12rpx;
+    padding: 0 20rpx;
+    font-size: 28rpx;
+    border: none;
+  }
+  
+  /* 收支切换样式 */
+  .type-toggle {
+    justify-content: center;
+    gap: 20rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .toggle-btn {
+    width: 200rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    padding: 0;
+    font-size: 28rpx;
+    border-radius: 35rpx;
+    background: #f5f7f9;
+    color: #666;
+  }
+  
+  .toggle-btn.active-expense {
+    background: #fff1f0;
+    color: #ff4d4f;
+    font-weight: 500;
+  }
+  
+  .toggle-btn.active-income {
+    background: #f6ffed;
+    color: #07c160;
+    font-weight: 500;
+  }
+  
+  /* 提交按钮样式 */
+  .submit-btn {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0;
+    background: linear-gradient(135deg, #8baa92, #6d917a);
+    color: white;
+    font-size: 32rpx;
+    border-radius: 45rpx;
+    margin-top: 20rpx;
+    box-shadow: 0 5rpx 15rpx rgba(139, 170, 146, 0.3);
+  }
+  
+  /* 今日记录样式 */
+  .today-records {
+    background: white;
+    border-radius: 20rpx;
+    padding: 25rpx;
+    box-shadow: 0 5rpx 15rpx rgba(0,0,0,0.05);
+  }
+  
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25rpx;
+    padding-bottom: 15rpx;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  
+  .section-title text {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .summary {
+    display: flex;
+    gap: 20rpx;
+  }
+  
+  .expense {
+    color: #ff4d4f;
+    font-size: 26rpx;
+  }
+  
+  .income {
+    color: #07c160;
+    font-size: 26rpx;
+  }
+  
+  /* 空状态样式 */
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80rpx 0;
     color: #999;
   }
   
+  .empty-img {
+    width: 180rpx;
+    height: 180rpx;
+    margin-bottom: 20rpx;
+    opacity: 0.5;
+  }
+  
+  /* 记录列表样式 */
   .record-list {
-    background-color: white;
-    border-radius: 20rpx;
-    box-shadow: 0 4rpx 20rpx rgba(139, 170, 146, 0.1);
-    overflow: hidden;
+    margin-top: 10rpx;
   }
   
   .record-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 30rpx;
-    border-bottom: 2rpx solid #f5f5f5;
+    padding: 18rpx 0;
+    border-bottom: 1px solid #f5f5f5;
   }
   
-  .record-item:last-child {
-    border-bottom: none;
-  }
-  
-  .record-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .type-tag {
-    font-size: 24rpx;
-    color: white;
-    padding: 8rpx 20rpx;
-    border-radius: 20rpx;
+  .record-icon {
+    width: 48rpx;
+    height: 48rpx;
     margin-right: 20rpx;
+    padding: 8rpx;
+    background: #f5f7f9;
+    border-radius: 12rpx;
   }
   
   .record-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .record-date {
-    font-size: 24rpx;
-    color: #999;
-    margin-bottom: 5rpx;
+    flex: 1;
   }
   
   .record-remark {
     font-size: 28rpx;
     color: #333;
+    margin-bottom: 5rpx;
+  }
+  
+  .record-time {
+    font-size: 22rpx;
+    color: #999;
   }
   
   .record-amount {
-    font-size: 32rpx;
-    font-weight: 600;
-    color: #e63946;
+    font-size: 28rpx;
+    font-weight: 500;
+    margin-right: 15rpx;
+    min-width: 120rpx;
+    text-align: right;
+  }
+  
+  .delete-btn {
+    width: 50rpx;
+    height: 50rpx;
+    padding: 0;
+    background: #4f9378;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small !important;
+    line-height: 50rpx;
+    color: #fff;
+    margin-left: 20rpx;
+  }
+  
+  .delete-icon {
+    width: 26rpx;
+    height: 26rpx;
+    opacity: 0.5;
+  }
+  
+  /* 日期选择器触发器（隐藏） */
+  .date-picker-trigger {
+    position: fixed;
+    top: -1000rpx;
+    left: 0;
+    width: 1px;
+    height: 1px;
+  }
+  
+  /* 消费类型弹窗样式 */
+  .type-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20rpx;
+    padding: 10rpx;
+  }
+  
+  .type-grid-item {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx 10rpx;
+    border-radius: 12rpx;
+    background: #f5f7f9;
+    margin-bottom: 10rpx;
+  }
+  
+  .type-grid-item:active {
+    background: #e8f4ea;
+  }
+  
+  .grid-icon {
+    width: 56rpx;
+    height: 56rpx;
+    margin-bottom: 15rpx;
+  }
+  
+  .grid-text {
+    font-size: 24rpx;
+    color: #333;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }

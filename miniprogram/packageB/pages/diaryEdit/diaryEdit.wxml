@@ -1,0 +1,29 @@
+<view class="container">
+  <!-- 标题输入框 -->
+  <view class="input-item">
+    <input 
+      class="title-input" 
+      placeholder="输入日记标题" 
+      placeholder-style="color:#ccc"
+      bindinput="onTitleInput"
+      value="{{title}}"
+    />
+  </view>
+
+  <!-- 正文编辑框 + 字数统计 -->
+  <view class="input-item">
+    <textarea 
+      class="content-input" 
+      placeholder="记录今日的心情和故事..." 
+      placeholder-style="color:#ccc"
+      bindinput="onContentInput"
+      value="{{content}}"
+      auto-height
+    ></textarea>
+    <!-- 字数统计 -->
+    <view class="word-count">{{contentLength}} / 500</view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <button class="save-btn" bindtap="saveDiary">保存日记</button>
+</view>

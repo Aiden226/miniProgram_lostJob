@@ -1,5 +1,8 @@
 {
     "navigationBarTitleText": "记账本",
     "navigationBarBackgroundColor": "#8baa92",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
+      }
 }

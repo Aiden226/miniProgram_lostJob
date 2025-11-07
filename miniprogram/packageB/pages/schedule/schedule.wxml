@@ -1,0 +1,90 @@
+<view class="container">
+    <!-- 标题 -->
+    <!-- <view class="page-title">日程管理</view> -->
+
+    <!-- 日历组件区域 -->
+    <view class="calendar-container">
+        <!-- 年月标题 -->
+        <view class="calendar-header">
+            <button class="btn" bindtap="prevMonth">←</button>
+            <view class="current-date">{{currentYear}}年{{currentMonth}}月</view>
+            <button class="btn" bindtap="nextMonth">→</button>
+        </view>
+
+        <!-- 星期标题 -->
+        <view class="week-days">
+            <view class="week-day">日</view>
+            <view class="week-day">一</view>
+            <view class="week-day">二</view>
+            <view class="week-day">三</view>
+            <view class="week-day">四</view>
+            <view class="week-day">五</view>
+            <view class="week-day">六</view>
+        </view>
+
+        <!-- 日历网格 -->
+        <view class="calendar-grid">
+            <!-- 上月日期（灰色） -->
+            <view class="calendar-day prev-month" wx:for="{{prevMonthDays}}" wx:key="*this">
+                <view class="day-number">{{item}}</view>
+            </view>
+
+            <!-- 当月日期 -->
+            <view
+                class="calendar-day current-month {{item.day === currentDay ? 'today' : ''}} {{item.day === selectedDay ? 'selected' : ''}}"
+                wx:for="{{dayStatus}}" wx:key="day"
+                bindtap="selectDate"
+                data-day="{{item.day}}"
+                >
+                <view class="day-number">{{item.day}}</view>
+                <view class="dot" wx:if="{{item.hasSchedule}}"></view>
+            </view>
+            <!-- 下月日期（灰色） -->
+            <view class="calendar-day next-month" wx:for="{{nextMonthDays}}" wx:key="*this">
+                <view class="day-number">{{item}}</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 日程区域 -->
+    <view class="schedule-container">
+        <view class="schedule-header">
+            <view class="selected-date">{{selectedFullDate}} 日程</view>
+            <button class="add-btn" bindtap="addSchedule">+ 添加行程</button>
+        </view>
+
+        <!-- 空状态 -->
+        <view class="empty" wx:if="{{selectedSchedules.length === 0}}">
+            <text>当天暂无行程</text>
+        </view>
+
+        <!-- 日程列表 -->
+        <view class="schedule-list" wx:else>
+            <view class="schedule-item" wx:for="{{selectedSchedules}}" wx:key="index">
+                <view class="schedule-time">{{item.time}}</view>
+                <view class="schedule-content">{{item.content}}</view>
+                <button class="delete-btn" bindtap="deleteSchedule" data-index="{{index}}">
+                    删除
+                </button>
+            </view>
+        </view>
+    </view>
+
+    <!-- 添加行程弹窗 -->
+    <view class="modal-mask" wx:if="{{showAddModal}}" bindtap="closeModal"></view>
+    <view class="modal" wx:if="{{showAddModal}}">
+        <view class="modal-title">添加行程（{{selectedFullDate}}）</view>
+        <view class="modal-input">
+            <text>时间：</text>
+            <input type="time" value="{{scheduleTime}}" bindinput="onTimeChange" placeholder="输入时间" />
+        </view>
+        <view class="modal-input">
+            <text>内容：</text>
+            <input type="text" value="{{scheduleContent}}" bindinput="onContentChange" placeholder="输入行程内容" />
+        </view>
+        <view class="modal-btns">
+            <button class="cancel-btn" bindtap="closeModal">取消</button>
+            <button class="confirm-btn" bindtap="saveSchedule">保存</button>
+        </view>
+    </view>
+</view>

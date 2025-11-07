@@ -1,0 +1,146 @@
+/* 基础样式 */
+.container {
+    padding: 20rpx;
+    min-height: 100vh;
+    background-color: #f9fcf9;
+  }
+  
+  /* 页面标题 */
+  .page-title {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #333;
+    margin: 20rpx 0 40rpx;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  /* 日记列表 */
+  .diary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25rpx;
+  }
+  
+  /* 日记卡片 */
+  .diary-card {
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 30rpx;
+    box-shadow: 0 5rpx 15rpx rgba(139, 170, 146, 0.1);
+  }
+  
+  /* 卡片头部 */
+  .card-header {
+    margin-bottom: 20rpx;
+    position: relative;
+  }
+  
+  .card-title {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10rpx;
+  }
+  
+  .card-time {
+    font-size: 22rpx;
+    color: #8baa92;
+    text-align: left;
+  }
+  
+  /* 卡片正文（4行省略） */
+  .card-content {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  /* 空状态 */
+  .empty-tip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200rpx;
+    color: #999;
+  }
+  
+  .empty-icon {
+    font-size: 80rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .empty-text {
+    font-size: 28rpx;
+    margin-bottom: 10rpx;
+  }
+  
+  .empty-subtext {
+    font-size: 24rpx;
+  }
+  
+  /* 底部悬浮按钮 */
+  .add-btn {
+    position: fixed;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    background-color: #8baa92;
+    color: white;
+    font-size: 32rpx;
+    border-radius: 45rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15rpx;
+    box-shadow: 0 5rpx 15rpx rgba(139, 170, 146, 0.3);
+  }
+  
+  .btn-icon {
+    font-size: 40rpx;
+    line-height: 1;
+  }
+  /* 基础样式不变，新增以下内容 */
+/* 卡片头部（调整布局，容纳删除按钮） */
+.card-header {
+    margin-bottom: 20rpx;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* 删除按钮 */
+  .delete-btn {
+    align-self: flex-end;
+    width: 80rpx !important;
+    height: 45rpx;
+    line-height: 45rpx;
+    padding: 0;
+    font-size: 22rpx;
+    color: #d87171;
+    background: transparent;
+    margin-bottom: 5rpx;
+    position: absolute;
+    right: 0rpx;
+    top: 40rpx;
+  }
+  
+  /* 原有样式不变，确保层级正确 */
+  .card-title {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10rpx;
+  }
+  
+  .card-time {
+    font-size: 22rpx;
+    color: #8baa92;
+    text-align: left;
+  }

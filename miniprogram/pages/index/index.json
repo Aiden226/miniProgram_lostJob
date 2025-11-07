@@ -1,7 +1,4 @@
 
 {
-  "navigationBarTitleText": "失业青年联盟",
-  "usingComponents": {
-    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
-  }
+  "navigationBarTitleText": "失业青年联盟"
 }

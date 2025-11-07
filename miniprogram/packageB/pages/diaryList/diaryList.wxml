@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-title">我的日记</view>
+
+  <!-- 日记列表 -->
+  <view class="diary-list">
+    <!-- 日记卡片（循环渲染） -->
+    <view class="diary-card" wx:for="{{diaryList}}" wx:key="id">
+      <!-- 卡片头部：标题+时间+删除按钮 -->
+      <view class="card-header">
+        <view class="card-title">{{item.title}}</view>
+        <button class="delete-btn" bindtap="deleteDiary" data-id="{{item.id}}">删除</button>
+        <view class="card-time">{{item.time}}</view>
+      </view>
+      <!-- 卡片正文（4行省略） -->
+      <view class="card-content">{{item.content}}</view>
+    </view>
+
+    <!-- 空状态提示 -->
+    <view class="empty-tip" wx:if="{{diaryList.length === 0}}">
+      <view class="empty-icon">📝</view>
+      <view class="empty-text">还没有日记哦～</view>
+      <view class="empty-subtext">点击下方按钮记录今日心情吧</view>
+    </view>
+  </view>
+
+  <!-- 底部悬浮按钮 -->
+  <button class="add-btn" bindtap="gotoEditPage">
+    <view class="btn-icon">+</view>
+    <view class="btn-text">记录今日心情</view>
+  </button>
+</view>
