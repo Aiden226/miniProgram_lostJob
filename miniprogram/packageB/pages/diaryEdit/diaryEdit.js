@@ -42,20 +42,27 @@ Page({
   
     // 监听正文输入（新增字数统计）
     onContentInput(e) {
-      const content = e.detail.value;
-      const contentLength = content.length;
-      // 限制最大字数500
+      let content = e.detail.value;
+      let contentLength = content.length;
+      
+      // 限制最多输入500个字符
       if (contentLength > 500) {
-        this.setData({
-          content: content.slice(0, 500),
-          contentLength: 500
-        });
-      } else {
-        this.setData({
-          content,
-          contentLength
-        });
+        content = content.substring(0, 500);
+        contentLength = 500;
+        // 只在首次超限时提示
+        if (this.data.contentLength <= 500) {
+          wx.showToast({
+            title: '字数已达上限',
+            icon: 'none',
+            duration: 1500
+          });
+        }
       }
+      
+      this.setData({
+        content,
+        contentLength
+      });
       // 输入时自动保存草稿
       this.saveDraft();
     },

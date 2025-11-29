@@ -18,6 +18,7 @@
       placeholder-style="color:#ccc"
       bindinput="onContentInput"
       value="{{content}}"
+      maxlength="500"
       auto-height
     ></textarea>
     <!-- 字数统计 -->

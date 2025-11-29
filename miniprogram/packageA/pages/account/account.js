@@ -18,15 +18,15 @@ Page({
             { id: 5, name: '娱乐', icon: '/images/types/entertainment.png', type: 'expense' },
             { id: 6, name: '医疗', icon: '/images/types/medical.png', type: 'expense' },
             { id: 7, name: '教育', icon: '/images/types/education.png', type: 'expense' },
-            { id: 8, name: '其他', icon: '/images/types/other.png', type: 'expense' },
-            { id: 9, name: '工资', icon: '/images/types/salary.png', type: 'income' },
-            { id: 10, name: '奖金', icon: '/images/types/bonus.png', type: 'income' },
-            { id: 11, name: '理财', icon: '/images/types/finance.png', type: 'income' },
-            { id: 12, name: '红包', icon: '/images/types/redpacket.png', type: 'income' },
-            { id: 13, name: '兼职', icon: '/images/types/parttime.png', type: 'income' },
-            { id: 14, name: '退款', icon: '/images/types/refund.png', type: 'income' },
-            { id: 15, name: '投资', icon: '/images/types/invest.png', type: 'income' },
-            { id: 16, name: '其他', icon: '/images/types/other-income.png', type: 'income' }
+            { id: 8, name: '投资', icon: '/images/types/other.png', type: 'expense' },
+            { id: 9, name: '工资', icon: '/images/types/salary.png', type: 'expense' },
+            { id: 10, name: '奖金', icon: '/images/types/bonus.png', type: 'expense' },
+            { id: 11, name: '理财', icon: '/images/types/finance.png', type: 'expense' },
+            { id: 12, name: '红包', icon: '/images/types/redpacket.png', type: 'expense' },
+            { id: 13, name: '兼职', icon: '/images/types/parttime.png', type: 'expense' },
+            { id: 14, name: '退款', icon: '/images/types/refund.png', type: 'expense' },
+            { id: 15, name: '其他', icon: '/images/types/invest.png', type: 'expense' },
+            // { id: 16, name: '其他', icon: '/images/types/other-income.png', type: 'income' }
         ],
         selectedType: { id: 1, name: '餐饮', icon: '/images/types/food.png' } // 默认选中类型
     },
@@ -98,8 +98,16 @@ Page({
         value = value.replace(/[^\d.]/g, ''); // 清除非数字和小数点
         value = value.replace(/^\./g, ''); // 清除开头的小数点
         value = value.replace(/\.{2,}/g, '.'); // 只保留一个小数点
-        value = value.replace('.', '$#$').replace(/\./g, '').replace('$#$', '.');
-        value = value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); // 限制两位小数
+        
+        // 如果包含小数点，则最多保留两位小数
+        if (value.indexOf('.') !== -1) {
+            const parts = value.split('.');
+            if (parts[1].length > 2) {
+                parts[1] = parts[1].substring(0, 2);
+            }
+            value = parts[0] + '.' + parts[1];
+        }
+        
         this.setData({ amount: value });
     },
 
