@@ -1,7 +1,6 @@
 {
     "pages": [
-        "pages/index/index",
-        "pages/markdown/markdown"
+        "pages/index/index"
     ],
     "subpackages": [
         {
@@ -23,7 +22,8 @@
             "pages": [
                 "pages/schedule/schedule",
                 "pages/diaryList/diaryList",
-                "pages/diaryEdit/diaryEdit"
+                "pages/diaryEdit/diaryEdit",
+                "pages/markdown/markdown"
             ],
             "independent": true
         }

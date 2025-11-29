@@ -1,0 +1,399 @@
+/* 全局样式 */
+page {
+  background: linear-gradient(180deg, #f5f7fa 0%, #eaf6fa 100%);
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20rpx 16rpx;
+  box-sizing: border-box;
+}
+
+/* 导航栏样式 */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  margin-bottom: 16rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1a202c;
+  background: linear-gradient(90deg, #3a673a, #8baa92);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+}
+
+/* 关键修改：switch 外部容器 + 深度选择器 */
+.switch-wrapper {
+  transform: scale(0.9);
+  margin-right: 12rpx;
+}
+
+/* 深度选择器（::v-deep 兼容微信小程序）强制覆盖 switch 样式 */
+.switch-wrapper ::v-deep .wx-switch-input {
+  /* 未选中状态 */
+  background-color: #f7fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* 选中状态（checked 伪类） */
+.switch-wrapper ::v-deep .wx-switch-input:checked {
+  background-color: #8baa92 !important;
+  border-color: #8baa92 !important;
+}
+
+/* 滑块样式 */
+.switch-wrapper ::v-deep .wx-switch-input::after {
+  background-color: #ffffff !important;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.15) !important;
+  width: 24rpx !important;
+  height: 24rpx !important;
+  top: 2rpx !important;
+  left: 2rpx !important;
+}
+
+/* 选中时滑块位置 */
+.switch-wrapper ::v-deep .wx-switch-input:checked::after {
+  left: calc(100% - 26rpx) !important; /* 右移滑块 */
+}
+
+.mode-text {
+  font-size: 26rpx;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+
+/* 文件选择区域 */
+.file-section {
+  margin-bottom: 24rpx;
+}
+
+.file-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx 24rpx;
+  background: #ffffff;
+  border: 2rpx dashed #8baa92;
+  border-radius: 16rpx;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4rpx 12rpx rgba(66, 153, 225, 0.05);
+}
+
+.file-picker-hover {
+  background: #f0f8fb;
+  border-color: #8baa92;
+  box-shadow: 0 6rpx 16rpx rgba(66, 153, 225, 0.1);
+}
+
+.picker-icon .icon {
+  width: 56rpx;
+  height: 56rpx;
+  margin-right: 20rpx;
+}
+
+.picker-text {
+  font-size: 30rpx;
+  color: #8baa92;
+  font-weight: 600;
+}
+
+/* 文件信息 */
+.file-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16rpx;
+  padding: 8rpx 16rpx;
+  background: rgba(66, 153, 225, 0.08);
+  border-radius: 12rpx;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.file-name {
+  font-size: 24rpx;
+  color: #2d3748;
+  margin-right: 20rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-size {
+  font-size: 22rpx;
+  color: #718096;
+}
+
+/* 内容区域 */
+.content-area {
+  flex: 1;
+  border-radius: 16rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 编辑器样式 */
+.editor {
+  width: 100%;
+  min-height: 100%;
+  font-size: 28rpx;
+  line-height: 2;
+  color: #1a202c;
+  padding: 32rpx 24rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: none;
+}
+
+.editor::-webkit-input-placeholder {
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+/* 预览滚动容器 */
+.preview-scroll {
+  width: 100%;
+  height: 100%;
+}
+
+/* 预览容器 */
+.preview-container {
+  padding: 40rpx 32rpx;
+  line-height: 2;
+}
+
+/* 富文本预览样式增强 */
+.preview-container rich-text {
+  font-size: 28rpx;
+  color: #1a202c;
+}
+
+.preview-container rich-text h1 {
+  font-size: 48rpx;
+  font-weight: 700;
+  margin: 60rpx 0 32rpx;
+  color: #1a202c;
+  border-bottom: 2rpx solid #e2e8f0;
+  padding-bottom: 16rpx;
+}
+
+.preview-container rich-text h2 {
+  font-size: 40rpx;
+  font-weight: 600;
+  margin: 50rpx 0 24rpx;
+  color: #1a202c;
+  border-left: 8rpx solid #4299e1;
+  padding-left: 20rpx;
+}
+
+.preview-container rich-text h3 {
+  font-size: 34rpx;
+  font-weight: 600;
+  margin: 40rpx 0 16rpx;
+  color: #1a202c;
+}
+
+.preview-container rich-text p {
+  margin: 24rpx 0;
+  text-align: justify;
+}
+
+.preview-container rich-text strong {
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.preview-container rich-text em {
+  font-style: italic;
+  color: #4a5568;
+}
+
+.preview-container rich-text a {
+  color: #4299e1;
+  text-decoration: underline;
+  text-underline-offset: 4rpx;
+  transition: color 0.2s;
+}
+
+.preview-container rich-text a:hover {
+  color: #3182ce;
+}
+
+.preview-container rich-text ul,
+.preview-container rich-text ol {
+  margin: 24rpx 0 24rpx 48rpx;
+}
+
+.preview-container rich-text ul {
+  list-style-type: disc;
+}
+
+.preview-container rich-text ol {
+  list-style-type: decimal;
+}
+
+.preview-container rich-text li {
+  margin: 16rpx 0;
+}
+
+/* 代码样式优化 */
+.preview-container rich-text pre {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin: 32rpx 0;
+  overflow-x: auto;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.preview-container rich-text code {
+  font-family: 'Fira Code', monospace;
+  font-size: 24rpx;
+  color: #2d3748;
+  line-height: 1.8;
+}
+
+/* 表格样式 */
+.preview-container rich-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32rpx 0;
+  font-size: 26rpx;
+}
+
+.preview-container rich-text th,
+.preview-container rich-text td {
+  border: 2rpx solid #e2e8f0;
+  padding: 16rpx 20rpx;
+  text-align: left;
+}
+
+.preview-container rich-text th {
+  background: #f7fafc;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.preview-container rich-text tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* 引用样式 */
+.preview-container rich-text blockquote {
+  border-left: 6rpx solid #cbd5e1;
+  padding: 16rpx 24rpx;
+  color: #4a5568;
+  margin: 32rpx 0;
+  background: #f8f9fa;
+  border-radius: 0 8rpx 8rpx 0;
+}
+
+/* 图片样式 */
+.preview-container rich-text img {
+  max-width: 100%;
+  border-radius: 12rpx;
+  margin: 32rpx 0;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 空状态样式 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #a0aec0;
+  padding: 40rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 32rpx;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.empty-state:hover .empty-icon {
+  opacity: 0.9;
+}
+
+.empty-text {
+  font-size: 34rpx;
+  margin-bottom: 16rpx;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  opacity: 0.8;
+  line-height: 1.6;
+  max-width: 600rpx;
+}
+
+/* 加载状态 */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 8rpx solid #f3f3f3;
+  border-top: 8rpx solid #4299e1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 24rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+/* 响应式适配 */
+@media (max-width: 375rpx) {
+  .preview-container {
+    padding: 32rpx 24rpx;
+  }
+  
+  .title {
+    font-size: 32rpx;
+  }
+  
+  .picker-text {
+    font-size: 28rpx;
+  }
+}

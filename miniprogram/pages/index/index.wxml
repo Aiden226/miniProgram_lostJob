@@ -41,7 +41,7 @@
             <image src="/images/note.png"></image>
             <text>今日总结</text>
         </view>
-        <view class="service-item" bindtap="onClickPowerInfo" data-name="MD助手">
+        <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/markdown/markdown'>
             <image src="/images/conmit.png"></image>
             <text>MD助手</text>
         </view>
@@ -54,8 +54,8 @@
             <text>首页</text>
         </view>
         <view class="tab-item">
-            <image src="/images/tab-me.png" bindtap="onClickPowerInfo" data-name="树洞"></image>
-            <text>树洞</text>
+            <image src="/images/tab-me.png" bindtap="onTargetUrl" data-url='/packageB/pages/markdown/markdown'></image>
+            <text>MD助手</text>
         </view>
         <!-- <view class="tab-item">
       <image src="/images/tab-list.png"></image>

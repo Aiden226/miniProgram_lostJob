@@ -19,8 +19,8 @@
 
 .welcome-btn {
     position: absolute;
-    bottom: 20rpx;
-    left: 50%;
+    bottom: 210rpx;
+    left: 36%;
     transform: translateX(-50%);
     background-color: #8baa92;
     color: #fff;
