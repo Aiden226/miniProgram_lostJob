@@ -41,9 +41,9 @@
             <image src="/images/note.png"></image>
             <text>今日总结</text>
         </view>
-        <view class="service-item" bindtap="onClickPowerInfo" data-name="负能量">
+        <view class="service-item" bindtap="onClickPowerInfo" data-name="MD助手">
             <image src="/images/conmit.png"></image>
-            <text>负能量</text>
+            <text>MD助手</text>
         </view>
     </view>
 
