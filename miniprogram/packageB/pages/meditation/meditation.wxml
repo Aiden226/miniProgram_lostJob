@@ -1,0 +1,45 @@
+<!-- 页面容器：治愈浅灰背景 -->
+<view class="meditation-container">
+  <!-- 封面图区域 -->
+  <view class="cover-wrapper">
+    <image class="cover-img" src="{{currentAudio.cover}}" mode="aspectFill"></image>
+  </view>
+
+  <!-- 音频信息：名称+当前进度/总时长 -->
+  <view class="audio-info">
+    <text class="audio-name">{{currentAudio.name}}</text>
+    <view class="time-group">
+      <text class="current-time">{{formatTime(currentTime)}}</text>
+      <text class="total-time">{{formatTime(duration)}}</text>
+    </view>
+  </view>
+
+  <!-- 进度条：可拖动控制 -->
+  <slider class="progress-slider" value="{{currentTime}}" max="{{duration}}" step="1" bindchange="handleProgressChange"
+    bindtouchstart="handleProgressTouchStart" bindtouchend="handleProgressTouchEnd"></slider>
+
+  <!-- 控制按钮：播放/暂停、上一曲、下一曲 -->
+  <view class="control-group">
+    <button class="control-btn" bindtap="playPrev" disabled="{{audioList.length <= 1}}">
+      <image src="/images/prev.png" mode="widthFix"></image>
+    </button>
+    <button class="control-btn play-btn" bindtap="togglePlay">
+      <image src="{{isPlaying ? '/images/pause.png' : '/images/play.png'}}" mode="widthFix"></image>
+    </button>
+    <button class="control-btn" bindtap="playNext" disabled="{{audioList.length <= 1}}">
+      <image src="/images/next.png" mode="widthFix"></image>
+    </button>
+  </view>
+
+  <!-- 音频列表：展示所有冥想曲目 -->
+  <view class="audio-list">
+    <text class="list-title">冥想曲目</text>
+    <view class="audio-item" wx:for="{{audioList}}" wx:key="id" bindtap="playAudio" data-index="{{index}}"
+      style="background-color: {{currentIndex === index ? '#eee' : 'transparent'}};">
+      <image class="item-cover" src="{{item.cover}}" mode="aspectFill"></image>
+      <text class="item-name">{{item.name}}</text>
+      <image class="item-play-icon" src="/images/playing.png" mode="widthFix"
+        hidden="{{currentIndex !== index || !isPlaying}}"></image>
+    </view>
+  </view>
+</view>

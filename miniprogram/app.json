@@ -23,7 +23,8 @@
                 "pages/schedule/schedule",
                 "pages/diaryList/diaryList",
                 "pages/diaryEdit/diaryEdit",
-                "pages/markdown/markdown"
+                "pages/markdown/markdown",
+                "pages/meditation/meditation"
             ],
             "independent": true
         }

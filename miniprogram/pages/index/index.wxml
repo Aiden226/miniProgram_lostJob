@@ -41,7 +41,7 @@
             <image src="/images/note.png"></image>
             <text>今日总结</text>
         </view>
-        <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/markdown/markdown'>
+        <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/meditation/meditation'>
             <image src="/images/conmit.png"></image>
             <text>MD助手</text>
         </view>
