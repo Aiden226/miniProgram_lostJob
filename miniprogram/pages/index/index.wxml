@@ -1,113 +1,113 @@
 <!--pages/index/index.wxml-->
 <view class="page-container">
-    <!-- 顶部店铺插画区域 -->
-    <view class="shop-banner">
-        <image class="shop-img" src="/images/shop-banner.jpg" mode="widthFix"></image>
-        <view class="welcome-btn">欢迎光临</view>
-    </view>
-    <view class="result-container" wx:if="{{resultDays > 0}}">
-        <view class="result-content">已经离职 <text class="highlight">{{resultDays}}</text> 天</view>
-    </view>
-    <!-- <button class="main-btn" bindtap="openDateModal">选择出生日期</button> -->
-    <image class="miaomiao" src="{{'/images/mm.png'}}" bindtap="openDateModal"></image>
-    <!-- 登录提示栏 -->
-    <view class="login-bar">
-        <image class="avatar" src="{{avatarUrl || '/images/avatar.png'}}"></image>
-        <text class="login-text">{{nickName ? '欢迎你' : '失业青年阵地'}} {{nickName}}</text>
-        <button wx:if="{{!nickName}}" class="login-btn" bindtap="showLoginDialog">立即登录</button>
-    </view>
+  <!-- 顶部店铺插画区域 -->
+  <view class="shop-banner">
+    <image class="shop-img" src="/images/shop-banner.jpg" mode="widthFix"></image>
+    <view class="welcome-btn2" bindtap="onTargetUrl" data-url='/packageB/pages/self/self'>CAIDAN</view>
+    <view class="welcome-btn">欢迎光临</view>
+  </view>
+  <view class="result-container" wx:if="{{resultDays > 0}}">
+    <view class="result-content">已经离职 <text class="highlight">{{resultDays}}</text> 天</view>
+  </view>
+  <!-- <button class="main-btn" bindtap="openDateModal">选择出生日期</button> -->
+  <image class="miaomiao" src="{{'/images/mm.png'}}" bindtap="openDateModal"></image>
+  <!-- 登录提示栏 -->
+  <view class="login-bar">
+    <image class="avatar" src="{{avatarUrl || '/images/avatar.png'}}"></image>
+    <text class="login-text">{{nickName ? '欢迎你' : '失业青年阵地'}} {{nickName}}</text>
+    <button wx:if="{{!nickName}}" class="login-btn" bindtap="showLoginDialog">立即登录</button>
+  </view>
 
-    <!-- 服务选项 -->
-    <view class="service-group">
-        <view class="service-item" bindtap="onTargetUrl" data-url='/packageA/pages/todo/todo'>
-            <image src="/images/todo.png"></image>
-            <text>todo List</text>
-        </view>
-        <view class="service-item" bindtap="onTargetUrl" data-url='/packageA/pages/100thing/100thing'>
-            <image src="/images/100thing.png"></image>
-            <text>100件事</text>
-        </view>
-        <view class="service-item" bindtap="onTargetUrl" data-url='/packageA/pages/account/account'>
-            <image src="/images/list.png"></image>
-            <text>记账</text>
-        </view>
+  <!-- 服务选项 -->
+  <view class="service-group">
+    <view class="service-item" bindtap="onTargetUrl" data-url='/packageA/pages/todo/todo'>
+      <image src="/images/todo.png"></image>
+      <text>todo List</text>
     </view>
-    <view class="service-group">
-        <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/schedule/schedule'>
-            <image src="/images/schedule.png"></image>
-            <text>今日行程</text>
-        </view>
-        <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/diaryList/diaryList'>
-            <image src="/images/note.png"></image>
-            <text>今日总结</text>
-        </view>
-        <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/meditation/meditation'>
-            <image src="/images/conmit.png"></image>
-            <text>MD助手</text>
-        </view>
+    <view class="service-item" bindtap="onTargetUrl" data-url='/packageA/pages/100thing/100thing'>
+      <image src="/images/100thing.png"></image>
+      <text>100件事</text>
     </view>
+    <view class="service-item" bindtap="onTargetUrl" data-url='/packageA/pages/account/account'>
+      <image src="/images/list.png"></image>
+      <text>记账</text>
+    </view>
+  </view>
+  <view class="service-group">
+    <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/schedule/schedule'>
+      <image src="/images/schedule.png"></image>
+      <text>今日行程</text>
+    </view>
+    <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/diaryList/diaryList'>
+      <image src="/images/note.png"></image>
+      <text>今日总结</text>
+    </view>
+    <view class="service-item" bindtap="onTargetUrl" data-url='/packageB/pages/meditation/meditation'>
+      <image src="/images/conmit.png"></image>
+      <text>冥想</text>
+    </view>
+  </view>
 
-    <!-- 底部导航栏 -->
-    <view class="tab-bar">
-        <view class="tab-item active">
-            <image src="/images/tab-home.png"></image>
-            <text>首页</text>
-        </view>
-        <view class="tab-item">
-            <image src="/images/tab-me.png" bindtap="onTargetUrl" data-url='/packageB/pages/markdown/markdown'></image>
-            <text>MD助手</text>
-        </view>
-        <!-- <view class="tab-item">
+  <!-- 底部导航栏 -->
+  <view class="tab-bar">
+    <view class="tab-item active">
+      <image src="/images/tab-home.png"></image>
+      <text>首页</text>
+    </view>
+    <view class="tab-item">
+      <image src="/images/tab-me.png" bindtap="onTargetUrl" data-url='/packageB/pages/markdown/markdown'></image>
+      <text>MD助手</text>
+    </view>
+    <!-- <view class="tab-item">
       <image src="/images/tab-list.png"></image>
       <text>订单</text>
     </view> -->
-        <!-- <view class="tab-item">
+    <!-- <view class="tab-item">
       <image src="/images/tab-me.png" bindtap="onClickPowerInfo"  data-name="我的"></image>
       <text>我的</text>
     </view> -->
+  </view>
+
+  <!-- 半屏对话框 -->
+  <mp-half-screen-dialog title="完善个人信息" show="{{showDialog}}" bindclose="closeDialog">
+    <view slot="desc" class="dialog-content">
+      <!-- 头像选择区域 -->
+      <view class="avatar-container">
+        <view class="avatar-title">选择头像</view>
+        <button class="avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+          <image class="avatar-img" src="{{avatarUrl}}" mode="cover"></image>
+          <view class="avatar-placeholder" wx:if="{{!avatarUrl}}">点击选择</view>
+        </button>
+      </view>
+
+      <!-- 昵称输入区域 -->
+      <view class="nickname-container">
+        <view class="nickname-title">设置昵称</view>
+        <input class="nickname-input" type="nickname" placeholder="请输入您的昵称" value="{{nickName}}"
+          bindinput="onNicknameInput" />
+      </view>
+
+      <!-- 确认登录按钮 -->
+      <button class="confirm-btn" bindtap="confirmLogin" disabled="{{!avatarUrl || !nickName}}">
+        确认登录
+      </button>
     </view>
-
-    <!-- 半屏对话框 -->
-    <mp-half-screen-dialog title="完善个人信息" show="{{showDialog}}" bindclose="closeDialog">
-        <view slot="desc" class="dialog-content">
-            <!-- 头像选择区域 -->
-            <view class="avatar-container">
-                <view class="avatar-title">选择头像</view>
-                <button class="avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-                    <image class="avatar-img" src="{{avatarUrl}}" mode="cover"></image>
-                    <view class="avatar-placeholder" wx:if="{{!avatarUrl}}">点击选择</view>
-                </button>
-            </view>
-
-            <!-- 昵称输入区域 -->
-            <view class="nickname-container">
-                <view class="nickname-title">设置昵称</view>
-                <input class="nickname-input" type="nickname" placeholder="请输入您的昵称" value="{{nickName}}"
-                    bindinput="onNicknameInput" />
-            </view>
-
-            <!-- 确认登录按钮 -->
-            <button class="confirm-btn" bindtap="confirmLogin" disabled="{{!avatarUrl || !nickName}}">
-                确认登录
-            </button>
-        </view>
-    </mp-half-screen-dialog>
-    <!-- 弹窗 -->
-    <view class="modal-mask" wx:if="{{showModal}}" bindtap="closeModal"></view>
-    <view class="modal" wx:if="{{showModal}}">
-        <view class="modal-header">
-            <view class="modal-title">选择离职日期</view>
-            <button class="close-btn" bindtap="closeModal">×</button>
-        </view>
-        <view class="modal-body">
-            <picker mode="date" value="{{selectedDate}}" start="1900-01-01" end="{{todayDate}}"
-                bindchange="onDateChange">
-                <view class="picker-input">{{selectedDate || '请选择'}}</view>
-            </picker>
-        </view>
-        <view class="modal-footer">
-            <button class="cancel-btn" bindtap="closeModal">取消</button>
-            <button class="confirm-btn" bindtap="calculateDays">确定</button>
-        </view>
+  </mp-half-screen-dialog>
+  <!-- 弹窗 -->
+  <view class="modal-mask" wx:if="{{showModal}}" bindtap="closeModal"></view>
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-header">
+      <view class="modal-title">选择离职日期</view>
+      <button class="close-btn" bindtap="closeModal">×</button>
     </view>
+    <view class="modal-body">
+      <picker mode="date" value="{{selectedDate}}" start="1900-01-01" end="{{todayDate}}" bindchange="onDateChange">
+        <view class="picker-input">{{selectedDate || '请选择'}}</view>
+      </picker>
+    </view>
+    <view class="modal-footer">
+      <button class="cancel-btn" bindtap="closeModal">取消</button>
+      <button class="confirm-btn" bindtap="calculateDays">确定</button>
+    </view>
+  </view>
 </view>

@@ -19,14 +19,27 @@
 
 .welcome-btn {
     position: absolute;
-    bottom: 210rpx;
+    bottom: -10rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8baa92;
+    color: #FFF;
+    padding: 10rpx 40rpx;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+    opacity: 0.9;
+}
+.welcome-btn2 {
+  position: absolute;
+    bottom: 220rpx;
     left: 36%;
     transform: translateX(-50%);
     background-color: #8baa92;
     color: #fff;
-    padding: 10rpx 40rpx;
-    border-radius: 30rpx;
+    padding: 5rpx 40rpx;
+    /* border-radius: 30rpx; */
     font-size: 24rpx;
+    opacity: 0.3;
 }
 .miaomiao {
     width: 160rpx;
@@ -70,7 +83,7 @@
 }
 
 .login-btn {
-    background-color: #8baa92;
+    background-color: #67c17c;
     color: #fff;
     font-size: 24rpx;
     padding: 10rpx 10rpx;

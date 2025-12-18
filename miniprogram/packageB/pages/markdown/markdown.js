@@ -24,9 +24,17 @@ Page({
         emoji: true,         // 支持表情
         sanitize: false,     // 允许 HTML 标签
         highlight: (code, lang) => {
-          // 代码高亮优化
-          const langClass = lang ? `language-${lang}` : '';
-          return `<pre class="code-block"><code class="${langClass}">${wx.marked.escape(code)}</code></pre>`;
+          // 改进代码块生成格式，添加语言类名用于样式区分
+          const langClass = lang ? `language-${lang}` : 'language-plaintext';
+          // 对特殊字符进行转义处理
+          const escapedCode = wx.marked.escape(code)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+            
+          return `<pre class="code-block"><code class="${langClass}">${escapedCode}</code></pre>`;
         }
       });
     }

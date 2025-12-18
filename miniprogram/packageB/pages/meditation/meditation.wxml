@@ -21,13 +21,13 @@
   <!-- 控制按钮：播放/暂停、上一曲、下一曲 -->
   <view class="control-group">
     <button class="control-btn" bindtap="playPrev" disabled="{{audioList.length <= 1}}">
-      <image src="/images/prev.png" mode="widthFix"></image>
+      <image src="/images/3.jpg" mode="widthFix"></image>
     </button>
     <button class="control-btn play-btn" bindtap="togglePlay">
-      <image src="{{isPlaying ? '/images/pause.png' : '/images/play.png'}}" mode="widthFix"></image>
+      <image src="{{isPlaying ? '/images/2.jpg' : '/images/1.jpg'}}" mode="widthFix"></image>
     </button>
     <button class="control-btn" bindtap="playNext" disabled="{{audioList.length <= 1}}">
-      <image src="/images/next.png" mode="widthFix"></image>
+      <image src="/images/3.jpg" mode="widthFix" style="rotate: 180deg;"></image>
     </button>
   </view>
 

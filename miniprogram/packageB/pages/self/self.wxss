@@ -1,0 +1,5 @@
+/* packageB/packageB/pages/self/self.wxss */
+.page-container {
+ display: flex;
+ justify-content: center;
+}

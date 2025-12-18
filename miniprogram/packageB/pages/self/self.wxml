@@ -1,0 +1,5 @@
+<!--packageB/packageB/pages/self/self.wxml-->
+<view class="page-container">
+  <view>如有问题，请联系我，谢谢</view>
+  <view>wx: yjt5780226</view>
+</view>

@@ -1,6 +1,6 @@
 <view class="container">
   <!-- 页面标题 -->
-  <view class="page-title">我的日记</view>
+  <view class="page-title">日记列表</view>
 
   <!-- 日记列表 -->
   <view class="diary-list">

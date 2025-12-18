@@ -4,13 +4,13 @@ Page({
       {
         id: 1,
         name: "森林雨声",
-        url: "https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_1MB_MP3.mp3", // 免费测试音频
+        url: "https://yangjingtai-1392504161.cos.ap-guangzhou.myqcloud.com/flute-music-with-rain-ambiance-370521.mp3", // 免费测试音频
         cover: "https://picsum.photos/id/1019/300/300" // 森林相关图片（300x300像素）
       },
       {
         id: 2,
         name: "溪流鸟鸣",
-        url: "https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_2MB_MP3.mp3",
+        url: "https://yangjingtai-1392504161.cos.ap-guangzhou.myqcloud.com/mixkit-relaxing-in-nature-522.mp3",
         cover: "https://picsum.photos/id/1025/300/300" // 自然溪流图片
       },
       {

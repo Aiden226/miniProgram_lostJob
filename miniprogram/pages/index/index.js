@@ -117,6 +117,7 @@ Page({
     // TodoList
     onTargetUrl(event) {
         const url = event.currentTarget.dataset.url;
+        console.log('怎么回事', url)
         wx.navigateTo({
             url,
         });

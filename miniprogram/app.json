@@ -24,7 +24,8 @@
                 "pages/diaryList/diaryList",
                 "pages/diaryEdit/diaryEdit",
                 "pages/markdown/markdown",
-                "pages/meditation/meditation"
+                "pages/meditation/meditation",
+                "pages/self/self"
             ],
             "independent": true
         }

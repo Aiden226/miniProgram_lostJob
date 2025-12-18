@@ -16,7 +16,7 @@
         <view class="form-item amount-item">
             <text class="label">金额</text>
             <text class="amount-symbol">¥</text>
-            <input type="number" placeholder="0.00" bindinput="onAmountInput" value="{{amount}}" class="amount-input"
+            <input type="digit" placeholder="0.00" bindinput="onAmountInput" value="{{amount}}" class="amount-input"
                 placeholder-style="color:#ccc" />
         </view>
 

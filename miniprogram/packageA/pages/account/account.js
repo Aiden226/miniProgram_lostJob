@@ -95,17 +95,24 @@ Page({
     onAmountInput(e) {
         // 限制只能输入数字和小数点，且最多两位小数
         let value = e.detail.value;
+        
+        // 使用 digit 键盘时仍需确保只允许合法的数字格式
         value = value.replace(/[^\d.]/g, ''); // 清除非数字和小数点
         value = value.replace(/^\./g, ''); // 清除开头的小数点
         value = value.replace(/\.{2,}/g, '.'); // 只保留一个小数点
         
-        // 如果包含小数点，则最多保留两位小数
-        if (value.indexOf('.') !== -1) {
-            const parts = value.split('.');
-            if (parts[1].length > 2) {
-                parts[1] = parts[1].substring(0, 2);
+        // 确保小数点后最多两位
+        const dotIndex = value.indexOf('.');
+        if (dotIndex !== -1) {
+            const integerPart = value.substring(0, dotIndex);
+            let decimalPart = value.substring(dotIndex + 1);
+            
+            // 限制小数点后最多两位
+            if (decimalPart.length > 2) {
+                decimalPart = decimalPart.substring(0, 2);
             }
-            value = parts[0] + '.' + parts[1];
+            
+            value = integerPart + '.' + decimalPart;
         }
         
         this.setData({ amount: value });
