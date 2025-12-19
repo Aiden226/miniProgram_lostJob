@@ -60,7 +60,7 @@ Page({
     wx.chooseMessageFile({
       count: 1,
       type: 'file',
-      extension: ['.md'],
+      extension: ['.md', 'md'], // 添加不带点的扩展名以提高iOS兼容性
       success: (res) => {
         const file = res.tempFiles[0];
         this.setData({ 
